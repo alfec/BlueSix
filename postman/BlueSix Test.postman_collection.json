@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "09e62d5c-6eda-4595-bfa2-e5fd935c4aa1",
+		"name": "BlueSix Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10959022",
+		"_collection_link": "https://orange-water-364396.postman.co/workspace/BlueSix~34d4f4a6-d1e9-46be-ae85-c7bab0de8017/collection/10959022-09e62d5c-6eda-4595-bfa2-e5fd935c4aa1?action=share&source=collection_link&creator=10959022"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "CadastroUsuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"let idToken = responseJson._id;\r",
+									"if( responseJson.email === \"test@test.com\"){\r",
+									"    const schema = {\r",
+									"        \"message\": \"string\",\r",
+									"        \"_id\": \"string\",\r",
+									"    }\r",
+									"\r",
+									"    pm.test(\"Status code is 2xx - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(201);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validate the Json schema\", () => {\r",
+									"        pm.expect(pm.response.json()).to.have.jsonSchema(schema)\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validation field by field\", ()=> {\r",
+									"        pm.expect(responseJson.message).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson._id).to.be.a(\"string\");\r",
+									"    });\r",
+									"\r",
+									"    pm.environment.set(\"_id\", idToken);\r",
+									"}else{\r",
+									"    pm.test(\"Status code is 4xx - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(400);\r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const bodyList = [\r",
+									"    {\r",
+									"        nome: \"Test\",\r",
+									"        email: \"test@test.com\",\r",
+									"        password: \"teste\",\r",
+									"        administrador: \"false\"\r",
+									"    },\r",
+									"    {\r",
+									"        nome: \"Test\",\r",
+									"        password: \"teste\",\r",
+									"        administrador: \"false\"\r",
+									"    },\r",
+									"    { \r",
+									"        nome: \"Test\",\r",
+									"        email: \"test1@test.com\",\r",
+									"        administrador: \"false\"\r",
+									"    },\r",
+									"    {\r",
+									"        nome: \"\",\r",
+									"        email: \"test1@test.com\",\r",
+									"        password: \"teste\",\r",
+									"        administrador: \"false\"\r",
+									"    },\r",
+									"    { \r",
+									"        nome: \"Test\",\r",
+									"        email: \"test\",\r",
+									"        password: true,\r",
+									"        administrador: false\r",
+									"    }\r",
+									"];\r",
+									"\r",
+									"let index = pm.variables.get(\"index\") || 0;\r",
+									"pm.variables.set(\"bodyData\", JSON.stringify(bodyList[index]));\r",
+									"pm.variables.set(\"index\", ++index);\r",
+									"if (index >= bodyList.length) {\r",
+									"    pm.variables.set(\"index\", 0);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{bodyData}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/usuarios",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://serverest.dev/usuarios' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"nome\": \"Test\",\r\n  \"email\": \"test@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"false\"\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"const currentId = pm.variables.get(\"userId\");\r",
+									"\r",
+									"if( currentId === pm.environment.get(\"_id\")){\r",
+									"    const schema = {\r",
+									"        \"nome\": \"string\",\r",
+									"        \"email\": \"string\",\r",
+									"        \"password\": \"string\",\r",
+									"        \"administrador\": \"boolean\",\r",
+									"        \"_id\": \"string\"\r",
+									"    }\r",
+									"\r",
+									"    pm.test(\"Status code is 2xx - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validate the Json schema\", () => {\r",
+									"        pm.expect(pm.response.json()).to.have.jsonSchema(schema)\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validation field by field\", ()=> {\r",
+									"        pm.expect(responseJson.nome).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson.email).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson.password).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson.administrador).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson._id).to.be.a(\"string\");\r",
+									"    });\r",
+									"}else if(currentId === 123456 || currentId === \" \" || currentId === \"teste\"){\r",
+									"    const schema = {\r",
+									"        \"id\": \"string\"\r",
+									"    }\r",
+									"\r",
+									"    pm.test(\"Status code is 4xx - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(400);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validate the Json schema\", () => {\r",
+									"        pm.expect(pm.response.json()).to.have.jsonSchema(schema)\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validation field by field\", ()=> {\r",
+									"        pm.expect(responseJson.id).to.be.a(\"string\");\r",
+									"    });\r",
+									"}else if(currentId === \"xTDcQ23fMzrTeste\"){\r",
+									"    const schema = {\r",
+									"        \"message\": \"string\"\r",
+									"    }\r",
+									"\r",
+									"    pm.test(\"Status code is 4xx - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(400);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validate the Json schema\", () => {\r",
+									"        pm.expect(pm.response.json()).to.have.jsonSchema(schema)\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validation field by field\", ()=> {\r",
+									"        pm.expect(responseJson.message).to.be.a(\"string\");\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let id = pm.environment.get(\"_id\");\r",
+									"let testIds = [id, 123456, \"teste\", \" \",\"xTDcQ23fMzrTeste\"];\r",
+									"let index = pm.variables.get(\"index\") || 0;\r",
+									"\r",
+									"pm.variables.set(\"userId\", testIds[index]);\r",
+									"\r",
+									"pm.variables.set(\"index\", ++index);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://serverest.dev/usuarios/{{_id}}",
+							"protocol": "https",
+							"host": [
+								"serverest",
+								"dev"
+							],
+							"path": [
+								"usuarios",
+								"{{_id}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'https://serverest.dev/usuarios/0tmg7OoGlPPvWhqD' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login Call",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"const body = JSON.parse(pm.variables.get(\"bodyData\"));\r",
+									"if(body.email === \"test@test.com\"){\r",
+									"    const schema = {\r",
+									"        \"message\": \"string\",\r",
+									"        \"authorization\": \"string\",\r",
+									"    }\r",
+									"\r",
+									"    pm.test(\"Status code is 200 - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validate the Json schema\", () => {\r",
+									"        pm.expect(pm.response.json()).to.have.jsonSchema(schema)\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Validation field by field\", ()=> {\r",
+									"        pm.expect(responseJson.message).to.be.a(\"string\");\r",
+									"        pm.expect(responseJson.authorization).to.be.a(\"string\");\r",
+									"    });\r",
+									"}else{\r",
+									"    pm.test(\"Status code is 400 - pm.response\",  () => {\r",
+									"        pm.response.to.have.status(400);\r",
+									"    });\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const bodyList = [\r",
+									"    {\r",
+									"        \"email\": \"test@test.com\",\r",
+									"        \"password\": \"teste\"\r",
+									"    },\r",
+									"    {\r",
+									"        \"email\": \"test123123123123@qa.com.br\",\r",
+									"        \"password\": \"teste\"\r",
+									"    },\r",
+									"    { \r",
+									"        \"email\": \"\",\r",
+									"        \"password\": \"teste\"\r",
+									"    },\r",
+									"    {\r",
+									"        \"email\": \"test2@qa.com.br\",\r",
+									"        \"password\": \"\"    \r",
+									"    }\r",
+									"];\r",
+									"\r",
+									"let index = pm.variables.get(\"index\") || 0;\r",
+									"pm.variables.set(\"bodyData\", JSON.stringify(bodyList[index]));\r",
+									"pm.variables.set(\"index\", ++index);\r",
+									"if (index >= bodyList.length) {\r",
+									"    pm.variables.set(\"index\", 0);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{bodyData}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'POST' \\\r\n  'https://serverest.dev/login' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"email\": \"test@t.com\",\r\n  \"password\": \"teste\"\r\n}'"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
