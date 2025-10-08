@@ -1,0 +1,325 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 9,
+    "passes": 7,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-10-07T23:15:25.491Z",
+    "end": "2025-10-07T23:15:28.021Z",
+    "duration": 2530,
+    "testsRegistered": 9,
+    "passPercent": 77.77777777777779,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c08ead28-3382-4557-917b-ce32a5e45499",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\usuariosCalls.cy.js",
+      "file": "cypress\\e2e\\api\\usuariosCalls.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ff8dda1f-381d-4b31-81e6-7cd92d5e1537",
+          "title": "Tests for Usuarios calls",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+              "title": "Tests scenarios for the POST call",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Given we create a user with the correct data then we should succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we create a user with the correct data then we should succeed",
+                  "timedOut": null,
+                  "duration": 254,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    nome: \"Test\",\n    email: \"test12345@test.com\",\n    password: \"teste\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([200, 201]);\n  expect(response.body).to.have.property('message');\n  expect(response.body).to.have.property('_id');\n  const _id = response.body._id;\n  cy.wrap(_id).as('UserId');\n});",
+                  "err": {},
+                  "uuid": "6f5482ac-520e-494a-aa0d-fcf402a9bac5",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user without Name then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we try to create a user without Name then we should not succeed",
+                  "timedOut": null,
+                  "duration": 232,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    email: \"test@test.com\",\n    password: \"teste\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('nome');\n});",
+                  "err": {},
+                  "uuid": "8e34acb7-8d8c-45fd-858b-044f4810f147",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user without Administrador then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we try to create a user without Administrador then we should not succeed",
+                  "timedOut": null,
+                  "duration": 208,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    nome: \"Test\",\n    email: \"test@test.com\",\n    password: \"teste\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('administrador');\n});",
+                  "err": {},
+                  "uuid": "f188fe87-0cb2-4238-8393-131319874783",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user without Password then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we try to create a user without Password then we should not succeed",
+                  "timedOut": null,
+                  "duration": 230,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    nome: \"Test\",\n    email: \"test@test.com\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('password');\n});",
+                  "err": {},
+                  "uuid": "7fcd0890-16e5-4c0b-ba34-f3673abe3e38",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user without Email then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we try to create a user without Email then we should not succeed",
+                  "timedOut": null,
+                  "duration": 210,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    nome: \"Test\",\n    password: \"teste\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('email');\n});",
+                  "err": {},
+                  "uuid": "6f5d8fa3-70a2-493d-b5a2-0f3a2918b2ee",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user with Empty body then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the POST call Given we try to create a user with Empty body then we should not succeed",
+                  "timedOut": null,
+                  "duration": 222,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {}\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('email');\n  expect(response.body).to.have.property('password');\n  expect(response.body).to.have.property('nome');\n  expect(response.body).to.have.property('administrador');\n});",
+                  "err": {},
+                  "uuid": "c66e81a0-3c30-4dd4-adc2-a03197163257",
+                  "parentUUID": "535611a6-9e71-4788-8264-c9d1b6ab96db",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6f5482ac-520e-494a-aa0d-fcf402a9bac5",
+                "8e34acb7-8d8c-45fd-858b-044f4810f147",
+                "f188fe87-0cb2-4238-8393-131319874783",
+                "7fcd0890-16e5-4c0b-ba34-f3673abe3e38",
+                "6f5d8fa3-70a2-493d-b5a2-0f3a2918b2ee",
+                "c66e81a0-3c30-4dd4-adc2-a03197163257"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1356,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "5478c46d-8ff4-44c2-a6b2-5b8ca475e50e",
+              "title": "Tests scenarios for the GET call",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Given we create a user with the correct data then we should succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the GET call Given we create a user with the correct data then we should succeed",
+                  "timedOut": null,
+                  "duration": 472,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    nome: \"Test\",\n    email: \"test12345@test.com\",\n    password: \"teste\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([200, 201]);\n  expect(response.body).to.have.property('message');\n  expect(response.body).to.have.property('_id');\n  const _id = response.body._id;\n  cy.wrap(_id).as('UserId');\n});",
+                  "err": {
+                    "message": "AssertionError: expected 400 to be one of [ 200, 201 ]",
+                    "estack": "AssertionError: expected 400 to be one of [ 200, 201 ]\n    at Context.eval (webpack://bluesix/./cypress/e2e/api/usuariosCalls.cy.js:112:46)",
+                    "diff": "- 400\n+ [ 200, 201 ]\n"
+                  },
+                  "uuid": "945725ea-6cb9-4db0-a51b-7b33d2180a69",
+                  "parentUUID": "5478c46d-8ff4-44c2-a6b2-5b8ca475e50e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Given we try to create a user without Name then we should not succeed",
+                  "fullTitle": "Tests for Usuarios calls Tests scenarios for the GET call Given we try to create a user without Name then we should not succeed",
+                  "timedOut": null,
+                  "duration": 227,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/usuarios',\n  body: {\n    email: \"test@test.com\",\n    password: \"teste\",\n    administrador: \"false\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('nome');\n});",
+                  "err": {},
+                  "uuid": "2bcb355d-c13e-4080-9ce9-6d898bc48508",
+                  "parentUUID": "5478c46d-8ff4-44c2-a6b2-5b8ca475e50e",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "2bcb355d-c13e-4080-9ce9-6d898bc48508"
+              ],
+              "failures": [
+                "945725ea-6cb9-4db0-a51b-7b33d2180a69"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 699,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "1126a838-9f49-4674-a43f-a69e4ebed5f9",
+              "title": "Test scenario for the simple DELETE call",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Given we have an already created user When we delete it then we should suceed",
+                  "fullTitle": "Tests for Usuarios calls Test scenario for the simple DELETE call Given we have an already created user When we delete it then we should suceed",
+                  "timedOut": null,
+                  "duration": 322,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor('DELETE', `/usuarios/${_id}`);",
+                  "err": {
+                    "message": "ReferenceError: _id is not defined",
+                    "estack": "ReferenceError: _id is not defined\n    at Context.eval (webpack://bluesix/./cypress/e2e/api/usuariosCalls.cy.js:140:50)",
+                    "diff": null
+                  },
+                  "uuid": "14a25ae4-0262-4134-8e14-b7aa1229d888",
+                  "parentUUID": "1126a838-9f49-4674-a43f-a69e4ebed5f9",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "14a25ae4-0262-4134-8e14-b7aa1229d888"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 322,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

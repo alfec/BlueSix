@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-10-07T23:15:47.180Z",
+    "end": "2025-10-07T23:15:54.700Z",
+    "duration": 7520,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1a1838b4-2e07-47bb-8e73-be06684aed56",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ui\\login.cy.js",
+      "file": "cypress\\e2e\\ui\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8cf20799-0a68-4ab2-aa45-0ffb7b279683",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Do a login with the correct user and password",
+              "fullTitle": "Login Do a login with the correct user and password",
+              "timedOut": null,
+              "duration": 7427,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "login.doLogin('andreluiz217@gmail.com', 'Test1234');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-testid=\"pesquisar\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-testid=\"pesquisar\"]`, but never found it.\n    at validateElement (webpack://bluesix/./cypress/page-object/homepage.js:18:19)\n    at Object.doLogin (webpack://bluesix/./cypress/page-object/login.js:13:20)\n    at Context.eval (webpack://bluesix/./cypress/e2e/ui/login.cy.js:21:10)",
+                "diff": null
+              },
+              "uuid": "246e56ba-8f8d-4189-baa9-1c7ca9b025e3",
+              "parentUUID": "8cf20799-0a68-4ab2-aa45-0ffb7b279683",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "246e56ba-8f8d-4189-baa9-1c7ca9b025e3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7427,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}
