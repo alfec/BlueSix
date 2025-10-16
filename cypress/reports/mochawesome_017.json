@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-10-16T15:30:58.690Z",
+    "end": "2025-10-16T15:31:11.455Z",
+    "duration": 12765,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "339c4471-6997-4b71-8d91-4372e1231a2a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\interface\\login.cy.js",
+      "file": "cypress\\e2e\\interface\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d8c5eee7-4969-4094-8d10-55d2d49f8f5d",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create new user",
+              "fullTitle": "Login Create new user",
+              "timedOut": null,
+              "duration": 3794,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.clickCadastrar();\ncreateUser.validateElement('cadastro');\ncreateUser.create('Test', 'Test1234');",
+              "err": {},
+              "uuid": "441030f0-0855-4cb9-a885-e0a44886b228",
+              "parentUUID": "d8c5eee7-4969-4094-8d10-55d2d49f8f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Do a login with the correct user and password",
+              "fullTitle": "Login Do a login with the correct user and password",
+              "timedOut": null,
+              "duration": 5895,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "login.doLogin('Test@@test.com', 'Test1234');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-testid=\"pesquisar\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-testid=\"pesquisar\"]`, but never found it.\n    at validateElement (webpack://bluesix/./cypress/page-object/homepage.js:18:19)\n    at Object.doLogin (webpack://bluesix/./cypress/page-object/login.js:13:20)\n    at Context.eval (webpack://bluesix/./cypress/e2e/interface/login.cy.js:21:10)",
+                "diff": null
+              },
+              "uuid": "2e803500-6a14-4a8b-9c34-f90e54dfce94",
+              "parentUUID": "d8c5eee7-4969-4094-8d10-55d2d49f8f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Do a login with wrong credentials should see an error message",
+              "fullTitle": "Login Do a login with wrong credentials should see an error message",
+              "timedOut": null,
+              "duration": 2946,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.wrongLogin('andreluiz21@gmail.com', 'Test12');",
+              "err": {},
+              "uuid": "4f71c0a8-8a99-498a-bb22-1f02c67e73f2",
+              "parentUUID": "d8c5eee7-4969-4094-8d10-55d2d49f8f5d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "441030f0-0855-4cb9-a885-e0a44886b228",
+            "4f71c0a8-8a99-498a-bb22-1f02c67e73f2"
+          ],
+          "failures": [
+            "2e803500-6a14-4a8b-9c34-f90e54dfce94"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12635,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

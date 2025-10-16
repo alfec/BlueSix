@@ -1,0 +1,205 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-10-16T15:27:01.838Z",
+    "end": "2025-10-16T15:27:03.896Z",
+    "duration": 2058,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "23357015-2ea8-4d9f-9113-cc1044c78759",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\LoginCalls.cy.js",
+      "file": "cypress\\e2e\\api\\LoginCalls.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a6a715ef-df3d-4050-b58f-2bd4c82ee2dd",
+          "title": "Tests for Login calls",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+              "title": "Tests scenarios for the POST call",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Validate Login using correct credentials",
+                  "fullTitle": "Tests for Login calls Tests scenarios for the POST call Validate Login using correct credentials",
+                  "timedOut": null,
+                  "duration": 945,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/login',\n  body: {\n    \"email\": \"test@test.com\",\n    \"password\": \"teste\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([200, 201]);\n  expect(response.body).to.have.property('message');\n  expect(response.body).to.have.property('authorization');\n});",
+                  "err": {
+                    "message": "AssertionError: expected 401 to be one of [ 200, 201 ]",
+                    "estack": "AssertionError: expected 401 to be one of [ 200, 201 ]\n    at Context.eval (webpack://bluesix/./cypress/e2e/api/LoginCalls.cy.js:13:46)",
+                    "diff": "- 401\n+ [ 200, 201 ]\n"
+                  },
+                  "uuid": "7a3442e0-db2d-4d11-ad13-93907e5c3fd0",
+                  "parentUUID": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Validate Login using incorrect credentials",
+                  "fullTitle": "Tests for Login calls Tests scenarios for the POST call Validate Login using incorrect credentials",
+                  "timedOut": null,
+                  "duration": 252,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/login',\n  body: {\n    \"email\": \"test@t.com\",\n    \"password\": \"testeeee123\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('message');\n});",
+                  "err": {},
+                  "uuid": "9245a752-4996-423d-9eed-ad7ce744dcc6",
+                  "parentUUID": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Validate Login without Password",
+                  "fullTitle": "Tests for Login calls Tests scenarios for the POST call Validate Login without Password",
+                  "timedOut": null,
+                  "duration": 252,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/login',\n  body: {\n    \"email\": \"test@t.com\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('password');\n});",
+                  "err": {},
+                  "uuid": "38e1d4d8-4235-4f0b-bcd8-abc19495bf48",
+                  "parentUUID": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Validate Login without Email",
+                  "fullTitle": "Tests for Login calls Tests scenarios for the POST call Validate Login without Email",
+                  "timedOut": null,
+                  "duration": 249,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/login',\n  body: {\n    \"password\": \"teste\"\n  }\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('email');\n});",
+                  "err": {},
+                  "uuid": "1e4c1a7b-a5cb-4e49-a1b0-1f6f776c679b",
+                  "parentUUID": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Validate Login with empty body",
+                  "fullTitle": "Tests for Login calls Tests scenarios for the POST call Validate Login with empty body",
+                  "timedOut": null,
+                  "duration": 253,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.requestsFor({\n  method: 'POST',\n  url: '/login',\n  body: {}\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 401]);\n  expect(response.body).to.have.property('email');\n  expect(response.body).to.have.property('password');\n});",
+                  "err": {},
+                  "uuid": "e3e2b733-59a9-48b2-92e6-3dbac22bf6e2",
+                  "parentUUID": "fc0ddfd5-68a6-4098-9ec5-c00ddccb47b5",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "9245a752-4996-423d-9eed-ad7ce744dcc6",
+                "38e1d4d8-4235-4f0b-bcd8-abc19495bf48",
+                "1e4c1a7b-a5cb-4e49-a1b0-1f6f776c679b",
+                "e3e2b733-59a9-48b2-92e6-3dbac22bf6e2"
+              ],
+              "failures": [
+                "7a3442e0-db2d-4d11-ad13-93907e5c3fd0"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1951,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}
