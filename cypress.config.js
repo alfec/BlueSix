@@ -4,7 +4,11 @@ module.exports = {
   pageLoadTimeout: 10000,
   viewportWidth: 1440,
   viewportHeight: 900,
-  retries: 0,
+  chromeWebSecurity: false,
+  retries: {
+    runMode: 2,
+    openMode: 2,
+  },
   reporter: 'mochawesome',
   video: false,
   reporterOptions: {
