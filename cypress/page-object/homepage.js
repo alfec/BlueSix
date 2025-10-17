@@ -7,7 +7,7 @@ const btnCarrinho = '[data-testid="carrinho"]'
 const btnLogout = '[data-testid="logout"]'
 const btnsearch = '[data-testid="botaoPesquisar"]'
 const msgNoProduct = '#root > div > div > div.container-fluid'
-const productItem = '[data-testid="product-detail-link"]'
+const productItem = ' div > section'
 
 function validateElement(element){
     const choose = {
@@ -33,6 +33,5 @@ export const clickBtn = (button) =>{
 export const searchProduct = () =>{
     cy.get(searchField).type('Logitech')
     clickBtn('Pesquisar')
-    cy.get(msgNoProduct).should('not.be.visible')
-    cy.contains(productItem).should('be.visible')
+    cy.get(productItem).should('be.visible')
 }

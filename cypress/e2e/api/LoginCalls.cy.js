@@ -1,13 +1,16 @@
 describe('Tests for Login calls', () => {
     //first API test written
+    before(() => {
+        cy.createsDeafultUser()
+    });
     describe('Tests scenarios for the POST call', () => {
         it('Validate Login using correct credentials', () =>{
             cy.requestsFor({
                 method: 'POST',
                 url: '/login',
                 body: {
-                    "email": "test@test.com",
-                    "password": "teste"
+                    "email": Cypress.env('defaultEmail'),
+                    "password": Cypress.env('defaultPassword')
                 },
             }).then((response) => {
                 expect(response.status).to.be.oneOf([200, 201])

@@ -1,6 +1,8 @@
 import  * as login from '../../page-object/login.js'
 import * as createUser from '../../page-object/createUser.js'
 
+const password = 'teste1234';
+const email = 'test@qaTest.com.br';
 
 describe('Login', () => {
   beforeEach(() => {
@@ -14,11 +16,11 @@ describe('Login', () => {
   it('Create new user', () =>{
     login.clickCadastrar();
     createUser.validateElement('cadastro')
-    createUser.create('Test','Test1234')
+    createUser.create('Test', email, password)
   });
 
   it('Do a login with the correct user and password', () => {
-    login.doLogin('andreluiz217@gmail.com', 'Test1234')
+    login.doLogin(email, password)
   });
 
   it('Do a login with wrong credentials should see an error message', ()=>{

@@ -7,9 +7,9 @@ const linkEntrar = '[data-testid="entrar"]';
 const cadastro = '.font-robot';
 const msgAlert = '.alert';
 
-export const create = (name, password)=>{
+export const create = (name, email, password)=>{
     cy.get(nameField).type(name)
-    cy.get(emailField).type(name+x+'@test.com');
+    cy.get(emailField).type(email);
     cy.get(passwordField).type(password);
     cy.get(btnCadastrar).click();
     validateElement('Sucesso');
